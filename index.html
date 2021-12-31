@@ -30,23 +30,25 @@
 
           <div class="row">
 
-              <aside class= "col s12 m6 l3 border-right">
+              <section class= "col s12">
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12 search-section">
+                        <div class="valign-wrapper">
                         <p class="text-center">Instructions: Enter a zipcode to find schools within a 20 mile radius.</p>
-                        <div class="input-field col s12">
+                        <div class="input-field col s7">
                             <i class="material-icons prefix">school</i>
                             <input type="text" id="search" placeholder="ZIP">
                         </div><!--end of input field-->
-                        <div class="col s12">
+                        <div class="col s7">
                             <button class="btn waves-effect waves-light width-100" type="submit" id="search-btn">Search<i class="material-icons right">send</i></button>
                         </div><!--end of button column-->
                     </div><!--end of serach form column-->
+                    </div>
                 </div> <!-- end of search form row-->
-              </aside> <!--end of side section-->
+            </section> <!--end of side section-->
 
-              <div class="col s12 m6 l9">
-                  <table id="results-table" class="striped centered responsive-table">
+              <div class="col s12">
+                  <table id="results-table" class="striped centered">
                       <h5 class="text-center">College Results</h2>
                       <thead>
                           <tr>
@@ -57,8 +59,8 @@
                               <th>Tution OUT</th>
                           </tr>
                       </thead>
-                      <tbody>
-                          
+                      <tbody id="table-body">
+
                       </tbody>
                   </table>
               </div>
