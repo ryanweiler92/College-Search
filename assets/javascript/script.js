@@ -71,6 +71,7 @@ var collegeStateSearch = function (state) {
 };
 
 var displayResults = function (data){
+    tableBody.textContent = "";
 
     for (i = 0; i <= data.results.length; i++){
         var tableRow = document.createElement('tr');
