@@ -12,6 +12,23 @@ var stateSearchInput = document.getElementById("state-selection");
 var resultTable = document.getElementById("results-table");
 var tableBody = document.getElementById("table-body");
 
+
+
+
+// var jobLinks = document.querySelectorAll(".job-link")
+
+// var saveZip = function (event){
+
+//     console.log(event.target.id)
+//     localStorage.setItem("zip", event.target.id);
+// }
+
+
+
+
+
+
+
 //get zipcode search value
 var getSearchValue = function (e){
     e.preventDefault();
@@ -70,10 +87,18 @@ var collegeStateSearch = function (state) {
 
 };
 
+var saveZip = function(id){
+
+    console.log("something is happening")
+    localStorage.setItem("zip", id)
+    
+}
+
+
 var displayResults = function (data){
     tableBody.textContent = "";
 
-    for (i = 0; i <= data.results.length; i++){
+    for (i = 0; i < data.results.length; i++){
         var tableRow = document.createElement('tr');
         tableBody.appendChild(tableRow);
 
@@ -81,9 +106,16 @@ var displayResults = function (data){
         schoolName.textContent = data.results[i].latest.school.name;
         tableRow.appendChild(schoolName);
 
+        var jobLink = document.createElement("a");
+        jobLink.setAttribute("id", data.results[i].school.zip)
+        jobLink.setAttribute("href", "./housing.html")
+        jobLink.setAttribute("onclick", "saveZip(this.id)")
+        jobLink.setAttribute("class", "job-link")
+        tableRow.appendChild(jobLink)
+
         var cityName = document.createElement("td");
         cityName.textContent = data.results[i].latest.school.city;
-        tableRow.appendChild(cityName)
+        jobLink.appendChild(cityName)
 
         var schoolSize = document.createElement("td");
         var schoolSizeNum = data.results[i].latest.student.size;
@@ -117,9 +149,14 @@ var displayResults = function (data){
 
 
 
+
+
+
 searchBttn.addEventListener("click", getSearchValue);
 
 stateSearchBttn.addEventListener("click", getStateSearchValue);
+
+
 
 
 
