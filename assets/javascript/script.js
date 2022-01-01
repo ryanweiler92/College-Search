@@ -14,8 +14,9 @@ var stateSearchBttn = document.getElementById("search-btn-state");
 var stateSearchInput = document.getElementById("state-selection");
 var resultTable = document.getElementById("results-table");
 var tableBody = document.getElementById("table-body");
+var compareSubmitBtn = document.getElementById("compare-submit-btn")
 
-
+//feed modal with college names within checkbox form
 var modalSelections = function (){
     console.log("this function at least tried")
     var modalForm = document.getElementById("modal-form");
@@ -34,6 +35,7 @@ var modalSelections = function (){
         var inputEl = document.createElement("input");
         inputEl.setAttribute("type", "checkbox")
         inputEl.setAttribute("class", "check")
+        inputEl.setAttribute("id", schoolNames[i].textContent)
         inputEl.setAttribute("value", zipValues[i].id )
         labelEl.appendChild(inputEl)
 
@@ -45,6 +47,7 @@ var modalSelections = function (){
     checkLimit()
 }
 
+//limit to 2 selections
 var checkLimit = function () {
 var checks = document.querySelectorAll(".check")
 var max = 2;
@@ -55,6 +58,26 @@ for (var i = 0; i < checks.length; i++)
         if (checkedChecks.length >= max + 1)
         return false;
     }}
+
+var saveCollegeCompare = function(){
+    //var selections = document.querySelectorAll(".check:checked").value;
+
+    var checkedName = []
+    var checkedValue = [];
+    var inputElements = document.querySelectorAll(".check");
+    for (var i=0; i < inputElements.length; i++){
+        if(inputElements[i].checked){
+            checkedValue.push(inputElements[i].value)
+            checkedName.push(inputElements[i].id)
+            console.log(checkedValue)
+            console.log(checkedName)
+            
+        }
+        localStorage.setItem("college zip", checkedValue)
+        localStorage.setItem("college name", checkedName)
+    }
+    
+}
 
 
 
@@ -186,6 +209,8 @@ var displayResults = function (data){
 searchBttn.addEventListener("click", getSearchValue);
 
 stateSearchBttn.addEventListener("click", getStateSearchValue);
+
+compareSubmitBtn.addEventListener("click", saveCollegeCompare)
 
 
 
