@@ -4,13 +4,9 @@ var zipHeader = document.getElementById("zip")
 
 
 var loadZip = function(){
-
     var zip = localStorage.getItem("zip");
     getJobs(zip)
-
-
-}
-
+};
 
 
 var getJobs = function(zip) {
@@ -29,9 +25,7 @@ var getJobs = function(zip) {
     .catch(function(error) {
         console.log("Unable to connect to API")
     })
-
-
-}
+};
 
 var displayJobs = function(zip, data) {
 zipHeader.textContent = ""
@@ -69,17 +63,11 @@ for (i = 0; i <= data.results.length; i++) {
     linkSpan.appendChild(jobLink)
 
 
-}
-
-
-}
+}};
 
 
 
 loadZip();
-//getJobs();
-
-//console.log(getJobs("06085"))
 
 
 

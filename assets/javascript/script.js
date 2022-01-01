@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FormSelect.init(elems);
   });
 
+const elem = document.getElementById("modal1");
+const instance = M.Modal.init(elem, {dismissible: true});
+
 
 
 var searchInput = document.getElementById("search");
@@ -11,23 +14,6 @@ var stateSearchBttn = document.getElementById("search-btn-state");
 var stateSearchInput = document.getElementById("state-selection");
 var resultTable = document.getElementById("results-table");
 var tableBody = document.getElementById("table-body");
-
-
-
-
-// var jobLinks = document.querySelectorAll(".job-link")
-
-// var saveZip = function (event){
-
-//     console.log(event.target.id)
-//     localStorage.setItem("zip", event.target.id);
-// }
-
-
-
-
-
-
 
 //get zipcode search value
 var getSearchValue = function (e){
@@ -48,7 +34,6 @@ var getStateSearchValue = function (e){
 }
 
 
-
 var collegeZipSearch = function (zip) {
 
     var apiUrl = "http://api.data.gov/ed/collegescorecard/v1/schools.json?zip="+ zip +"&distance=20mi&sort=latest.student.size:desc&api_key=mzvkvI7tUG41Q8n90FJQmtCL7NdDczS5dhJW6pKO"
@@ -61,12 +46,13 @@ var collegeZipSearch = function (zip) {
             })
         } else {
             console.log("Error: No schools found")
+            instance.open();
         }
     })
     .catch(function(error) {
         console.log("Unable to connect to API")
     })
-}
+};
 
 var collegeStateSearch = function (state) {
     var apiUrl = "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.state="+state+"&sort=latest.student.size:desc&api_key=mzvkvI7tUG41Q8n90FJQmtCL7NdDczS5dhJW6pKO"
@@ -88,11 +74,9 @@ var collegeStateSearch = function (state) {
 };
 
 var saveZip = function(id){
-
     console.log("something is happening")
     localStorage.setItem("zip", id)
-    
-}
+};
 
 
 var displayResults = function (data){
@@ -145,10 +129,7 @@ var displayResults = function (data){
 
 
     }
-}
-
-
-
+};
 
 
 
