@@ -3,6 +3,16 @@
 var zipHeader = document.getElementById("zip")
 
 
+var loadZip = function(){
+
+    var zip = localStorage.getItem("zip");
+    getJobs(zip)
+
+
+}
+
+
+
 var getJobs = function(zip) {
     var apiUrl = "https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=03ab0e99&app_key=e527ac2e4dacd7eeb55525db9b15cac4&results_per_page=20&where=" + zip
     console.log(apiUrl)
@@ -24,10 +34,11 @@ var getJobs = function(zip) {
 }
 
 var displayJobs = function(zip, data) {
-
+zipHeader.textContent = ""
 zipHeader.textContent = zip;
 
 var tbody = document.getElementById("job-table-body")
+tbody.textContent = ""
 
 for (i = 0; i <= data.results.length; i++) {
 
@@ -58,17 +69,17 @@ for (i = 0; i <= data.results.length; i++) {
     linkSpan.appendChild(jobLink)
 
 
-
-
-
 }
 
 
 }
 
+
+
+loadZip();
 //getJobs();
 
-console.log(getJobs("06085"))
+//console.log(getJobs("06085"))
 
 
 
