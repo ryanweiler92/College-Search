@@ -22,7 +22,18 @@
     </div>
   </div>
 
-
+   <!-- Modal Structure -->
+   <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Compare Colleges</h4>
+      <p>Select 2 colleges to compare</p>
+      <form id="modal-form" action="#">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Dismiss</a>
+    </div>
+  </div>
 
     <div class="Mycontainer">
         <nav>
@@ -137,7 +148,12 @@
 
               <div class="col s12">
                   <table id="results-table" class="striped centered">
-                      <h5 class="text-center">College Results</h2>
+                      
+                      <h5 class="text-center">College Results</h5>
+                      <p class="text-center">Click on a city to see job postings.</p>
+                                         
+                      <a id="compare-btn" class="waves-effect waves-light btn modal-trigger" href="#modal2">Compare Colleges</a>
+                                             
                       <thead>
                           <tr>
                               <th>Name</th>

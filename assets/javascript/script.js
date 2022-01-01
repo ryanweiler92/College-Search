@@ -15,6 +15,42 @@ var stateSearchInput = document.getElementById("state-selection");
 var resultTable = document.getElementById("results-table");
 var tableBody = document.getElementById("table-body");
 
+
+var modalSelections = function (){
+    console.log("this function at least tried")
+    var modalForm = document.getElementById("modal-form");
+    var schoolNames = document.querySelectorAll(".school-name")
+    var zipValues = document.querySelectorAll(".job-link");
+    
+    for (var i = 0; i < schoolNames.length; i++){
+
+        console.log(schoolNames[i].textContent)
+        var paragraphEl = document.createElement("p")
+        modalForm.appendChild(paragraphEl);
+
+        var labelEl = document.createElement("label");
+        paragraphEl.appendChild(labelEl)
+
+        var inputEl = document.createElement("input");
+        inputEl.setAttribute("type", "checkbox")
+        inputEl.setAttribute("value", zipValues[i].id )
+        labelEl.appendChild(inputEl)
+
+        var spanEl = document.createElement("span");
+        spanEl.textContent = schoolNames[i].textContent;
+        labelEl.appendChild(spanEl);
+
+    }
+}
+
+
+
+
+
+
+const elem2 = document.getElementById("modal2")
+const instance2 = M.Modal.init(elem2, {dismissible: true}, {show: true})
+
 //get zipcode search value
 var getSearchValue = function (e){
     e.preventDefault();
@@ -88,6 +124,8 @@ var displayResults = function (data){
 
         var schoolName = document.createElement('td');
         schoolName.textContent = data.results[i].latest.school.name;
+        schoolName.setAttribute("class", "school-name");
+        schoolName.setAttribute("id", data.results[i].school.zip)
         tableRow.appendChild(schoolName);
 
         var jobLink = document.createElement("a");
@@ -129,6 +167,7 @@ var displayResults = function (data){
 
 
     }
+    modalSelections();
 };
 
 
