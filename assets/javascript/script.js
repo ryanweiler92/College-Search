@@ -159,6 +159,8 @@ var displayResults = function (data){
         schoolName.setAttribute("id", data.results[i].id)
         tableRow.appendChild(schoolName);
 
+        
+
         var jobLink = document.createElement("a");
         jobLink.setAttribute("id", data.results[i].school.zip)
         jobLink.setAttribute("href", "./housing.html")
@@ -171,10 +173,15 @@ var displayResults = function (data){
         jobLink.appendChild(cityName)
 
         var schoolSize = document.createElement("td");
-        var schoolSizeNum = data.results[i].latest.student.size;
-        var schoolSizeComma = schoolSizeNum.toLocaleString("en-US")
-        schoolSize.textContent = schoolSizeComma
+        if (data.results[i].latest.student.size == null){
+            schoolSize.textContent = "no data"
+        } else{
+            var schoolSizeNum = data.results[i].latest.student.size;
+            var schoolSizeComma = schoolSizeNum.toLocaleString("en-US")
+            schoolSize.textContent = schoolSizeComma
+        }
         tableRow.appendChild(schoolSize);
+        
 
         var tuitionIn = document.createElement("td");
         if (data.results[i].latest.cost.tuition.in_state == null){
