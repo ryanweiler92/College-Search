@@ -34,7 +34,7 @@ zipHeader.textContent = zip;
 var tbody = document.getElementById("job-table-body")
 tbody.textContent = ""
 
-for (i = 0; i <= data.results.length; i++) {
+for (i = 0; i < data.results.length; i++) {
 
     console.log(data.results.length)
 

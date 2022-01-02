@@ -163,7 +163,7 @@ var displayResults = function (data){
 
         var jobLink = document.createElement("a");
         jobLink.setAttribute("id", data.results[i].school.zip)
-        jobLink.setAttribute("href", "./housing.html")
+        jobLink.setAttribute("href", "./jobs.html")
         jobLink.setAttribute("onclick", "saveZip(this.id)")
         jobLink.setAttribute("class", "job-link")
         tableRow.appendChild(jobLink)

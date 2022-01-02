@@ -1,6 +1,6 @@
 .Mycontainer {
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 2000px;
     width: 100vw;
   }
   @media only screen and (min-width: 601px) {
@@ -12,6 +12,18 @@
     .container {
       width: 70%;
     }
+  }
+
+  nav a {
+    margin-left: 20px;
+  }
+
+  nav ul {
+    margin-right: 20px;
+  }
+
+  #compare-btn{
+    margin-left: 44%;
   }
 
   .hero {
@@ -61,6 +73,4 @@
       width: 100%
   }
 
-  #compare-btn {
-    margin: 0 auto;
-  }
+  
