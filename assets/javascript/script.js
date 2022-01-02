@@ -18,14 +18,13 @@ var compareSubmitBtn = document.getElementById("compare-submit-btn")
 
 //feed modal with college names within checkbox form
 var modalSelections = function (){
-    console.log("this function at least tried")
     var modalForm = document.getElementById("modal-form");
     var schoolNames = document.querySelectorAll(".school-name")
     var zipValues = document.querySelectorAll(".job-link");
     
     for (var i = 0; i < schoolNames.length; i++){
 
-        console.log(schoolNames[i].textContent)
+        
         var paragraphEl = document.createElement("p")
         modalForm.appendChild(paragraphEl);
 
@@ -35,7 +34,7 @@ var modalSelections = function (){
         var inputEl = document.createElement("input");
         inputEl.setAttribute("type", "checkbox")
         inputEl.setAttribute("class", "check")
-        inputEl.setAttribute("id", schoolNames[i].textContent)
+        inputEl.setAttribute("id", schoolNames[i].id)
         inputEl.setAttribute("value", zipValues[i].id )
         labelEl.appendChild(inputEl)
 
@@ -69,12 +68,10 @@ var saveCollegeCompare = function(){
         if(inputElements[i].checked){
             checkedValue.push(inputElements[i].value)
             checkedName.push(inputElements[i].id)
-            console.log(checkedValue)
-            console.log(checkedName)
             
         }
         localStorage.setItem("college zip", checkedValue)
-        localStorage.setItem("college name", checkedName)
+        localStorage.setItem("college id", checkedName)
     }
     
 }
@@ -159,7 +156,7 @@ var displayResults = function (data){
         var schoolName = document.createElement('td');
         schoolName.textContent = data.results[i].latest.school.name;
         schoolName.setAttribute("class", "school-name");
-        schoolName.setAttribute("id", data.results[i].school.zip)
+        schoolName.setAttribute("id", data.results[i].id)
         tableRow.appendChild(schoolName);
 
         var jobLink = document.createElement("a");
